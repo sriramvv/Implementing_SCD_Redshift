@@ -4,17 +4,17 @@ Introducion
 Project Datasets
 The project data set can be downloaded from https://www.kaggle.com/c/instacart-market-basket-analysis/data. 
 
-Aisle Dataset (134 rows):
+Aisle Dataset (134 rows): 
 The first dataset from "aisle.csv", provides two columns "aisle_id" and "aisle" which are comma separated. 
 aisle_id: aisle identifier
 aisle: the name of the aisle
 
-Department Dataset (21 rows):
+Department Dataset (21 rows): 
 The Department dataset from "departments.csv" also provides two columns "department_id" and "department" which are comma separated. 
 department_id: department identifier
 department: the name of the department
 
-Orders Dataset (3.4m rows, 206k users)
+Orders Dataset (3.4m rows, 206k users) 
 The Orders dataset from "orders.csv" provides valueable information for each order. The file contains 
 order_id: order identifier
 user_id: customer identifier
@@ -24,14 +24,14 @@ order_dow: the day of the week the order was placed on
 order_hour_of_day: the hour of the day the order was placed on
 days_since_prior: days since the last order, capped at 30 (with NAs for order_number = 1)
 
-Products Dataset (50k rows)
+Products Dataset (50k rows) 
 The Products dataset from "products.csv" gives us four columns.
 product_id: product identifier
 product_name: name of the product
 aisle_id: foreign key
 department_id: foreign key
 
-Order Products Prior Dataset 
+Order Products Prior Dataset  
 
 order_products_PRIOR (~3.2m orders):
 order_id: foreign key
