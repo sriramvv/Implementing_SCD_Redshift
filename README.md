@@ -31,9 +31,7 @@ product_name: name of the product
 aisle_id: foreign key
 department_id: foreign key
 
-Order Products Prior Dataset  
-
-order_products_PRIOR (~3.2m orders):
+Order Products Prior Dataset (~3.2m orders): 
 order_id: foreign key
 product_id: foreign key
 add_to_cart_order: order in which each product was added to cart
@@ -44,34 +42,43 @@ eval_set:  one of the four following evaluation sets (eval_set in orders):
           "test": test data reserved for machine learning competitions (~75k orders)
 
 Schema for Instacart Basket Analysis
-Using the above datasets, we'll  create a star schema optimized for queries. This includes the following tables.
+Using the above datasets, we'll  create a star schema optimized for queries. This includes the following tables:
 
-Fact Table
-1.fact_sales - records each user, user's orders, order's products, its department and aisles and their counts by time and date. 
+A. Fact Table
 
-USER_KEY, ORDER_KEY, PRODUCT_KEY, DEPARTMENT_KEY, AISLE_KEY, DATE_KEY, TIME_KEY
+FACT_SALES - records each user, user's orders, order's products, its department and aisles and their counts by time and date. 
+user_key, order_key, product_key, department_key, aisle_key, date_key, time_key
 
-Dimension Tables
-2.dim_user - users in the app
+B. Dimension Tables
+
+DIM_USER - 
 user_key, user_id, first_name, last_name, address, phone, state and city
 
-3.dim_product - products listed
+DIM_PRODUCT - 
 product_key, product_id, product_desc
 
-4.dim_ - artists in music database
+DIM_DEPARTMENT - 
+department_key, department_id, department_desc
 
-artist_id, name, location, latitude, longitude
-5.time - timestamps of records in songplays broken down into specific units
+DIM_ORDER - 
+order_key, order_id,	user_id,		eval_set,	order_num,	order_dow,	order_hr	
 
-start_time, hour, day, week, month, year, weekday
+DIM_AISLE - 
+aisle_key, aisle_id, aisle_desc
+
+DIM_DATE - 
+date_key, day_number, day_name, day_is_weekday
+
+DIME_TIME - 
+time_key, time_hr
+
 Project Template
 In addition to the data files, the project workspace includes six files:
 
-1.test.ipynb displays the first few rows of each table to let you check your database.
-2.create_tables.py drops and creates fact and dimension tables for the star schema in Redshift.
-3.etl.py load data from S3 into staging tables on Redshift and then process that data into your analytics tables on Redshift.
-4.sql_queries.py contains SQL statements, which will be imported into the two other files above.
-5.README.md provides discussion on your process and decisions for this ETL pipeline.
+1.create_tables.py drops and creates fact and dimension tables for the star schema in Redshift.
+2.etl.py load data from S3 into staging tables on Redshift and then process that data into your analytics tables on Redshift.
+3.sql_queries.py contains SQL statements, which will be imported into the two other files above.
+4.README.md provides discussion on your process and decisions for this ETL pipeline.
 
 Project Steps
 Create Table Schemas
@@ -85,6 +92,6 @@ Create Table Schemas
 
 Build ETL Pipeline
 1.Implement the logic in etl.py to load data from S3 to staging tables on Redshift.
-2.Implement the logic in etl.py to load data from staging tables to analytics tables on Redshift.
+2.Implement the logic in etl.py to load data from staging tables to dimension tables on Redshift.
 3.Test by running etl.py after running create_tables.py and running the analytic queries on your Redshift database to compare your results with the expected results.
 4.Delete your redshift cluster when finished.
